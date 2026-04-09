@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+  app:
+    build: .
+    container_name: object-detection-api
+    ports:
+      - "8000:8000"
+    environment:
+      YOLO_MODEL_PATH: yolov8n.pt
+      KAFKA_BOOTSTRAP_SERVERS: localhost:9092
+      KAFKA_INPUT_TOPIC: video-frames
+      KAFKA_OUTPUT_TOPIC: detection-results
+      CONFIDENCE_THRESHOLD: 0.4
